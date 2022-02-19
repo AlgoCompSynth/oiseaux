@@ -16,10 +16,11 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(oiseaux)
 library(dplyr)
-library(warbleR)
+library(oiseaux)
 library(soundgen)
+library(stringr)
+library(warbleR)
 ```
 
 ## Goals
@@ -30,10 +31,13 @@ compositions. `oiseaux` imports sound file download tools from `warbleR` [@araya
 [@anikin2019].
 
 In this vignette, we demonstrate `oiseaux` by creating a strange bird from
-two well-known birds that are active at night in North America: the great horned owl (Bubo sss) and the common loon (). The resulting night creature is
-called the _owloon_.
+two well-known birds that are active at night in North America: the great
+horned owl (Bubo virginianus) and the common loon (Gavia immer). The
+resulting creature of the night is called the _owloon_.
 
 ## Acquiring the source media
+
+### Data source and licensing
 
 Since we're creating a new bird from owls and loons, we need to acquire some
 suitable audio files. The `warbleR` package lets us query the
@@ -48,5 +52,40 @@ have Creative Commons licenses with the "ND" (no derivative works) or "NC"
 "CC-BY" (attribution), or "CC-BY-SA" (attribution / share-alike). It turns
 out that most of the usable files are "CC-BY-SA", so that is the license we
 use for the output files distributed with `oiseaux`.
+
+### The great horned owl
+
+`warbleR` allows querying by the English name of a species:
+
+```{r}
+
+# get a data frame of great horned owl sounds
+owls <- warbleR::query_xc("Great Horned Owl")
+
+# filter in the ones we can use
+usable_owls <- owls %>% 
+  dplyr::filter(
+    is.na(stringr::str_match(License, "-nc")) &
+      is.na(stringr::str_match(License, "/-nd"))
+  )
+print(usable_owls)
+
+```
+### The common loon
+
+```{r}
+
+# get a data frame of common loon sounds
+loons <- warbleR::query_xc("Common Loon")
+
+# filter in the ones we can use
+usable_loons <- loons %>% 
+  dplyr::filter(
+    is.na(stringr::str_match(License, "-nc")) &
+      is.na(stringr::str_match(License, "/-nd"))
+  )
+print(usable_loons)
+
+```
 
 ## References
