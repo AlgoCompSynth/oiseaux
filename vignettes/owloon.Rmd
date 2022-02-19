@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(oiseaux)
+library(dplyr)
 library(warbleR)
 library(soundgen)
 ```
@@ -31,5 +32,21 @@ compositions. `oiseaux` imports sound file download tools from `warbleR` [@araya
 In this vignette, we demonstrate `oiseaux` by creating a strange bird from
 two well-known birds that are active at night in North America: the great horned owl (Bubo sss) and the common loon (). The resulting night creature is
 called the _owloon_.
+
+## Acquiring the source media
+
+Since we're creating a new bird from owls and loons, we need to acquire some
+suitable audio files. The `warbleR` package lets us query the
+[zeno-canto](https://xeno-canto.org/), which is a collection of bird sounds
+from around the world. Each sound file is licensed using one of the
+[Creative Commons](https://creativecommons.org/share-your-work/) licenses.
+
+Since we want to analyze and resynthesize the sounds, and will be using them
+in compositions that may be recorded and published, we can't use files that
+have Creative Commons licenses with the "ND" (no derivative works) or "NC"
+(non-commercial) clause. That leaves us with "CC0" (public domain),
+"CC-BY" (attribution), or "CC-BY-SA" (attribution / share-alike). It turns
+out that most of the usable files are "CC-BY-SA", so that is the license we
+use for the output files distributed with `oiseaux`.
 
 ## References
