@@ -1,0 +1,13 @@
+Package: oiseaux
+Title: Manipulate bird calls for musical composition
+Version: 0.0.0.9000
+Authors@R: 
+    person("M. Edward (Ed)", "Borasky", , "znmeb@algotompsynth.com",
+    role = c("aut", "cre"))
+Description: `oiseaux` is a convenience wrapper on `warbleR`, which downloads
+    bird call files from <https://xeno-canto.org/>, and `soundgen`, which
+    provides analysis and resynthesis tools.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
