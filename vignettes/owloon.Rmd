@@ -1,0 +1,35 @@
+---
+title: "Creating a strange bird"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Creating a strange bird}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+bibliography: oiseaux.bib
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(oiseaux)
+library(warbleR)
+library(soundgen)
+```
+
+## Goals
+
+The goal of the `oiseaux` package [@borasky2022a] is to provide tools for
+composers to manipulate bird calls for incorporation into musical 
+compositions. `oiseaux` imports sound file download tools from `warbleR` [@araya_salas2017] and analysis / synthesis tools from `soundgen`
+[@anikin2019].
+
+In this vignette, we demonstrate `oiseaux` by creating a strange bird from
+two well-known birds that are active at night in North America: the great horned owl (Bubo sss) and the common loon (). The resulting night creature is
+called the _owloon_.
+
+## References

@@ -1,0 +1,9 @@
+year <- 2022
+note <- sprintf("R package version %s", meta$Version)
+
+bibentry(bibtype = "Manual",
+         title = "{oiseaux}: Manipulate bird calls for musical composition",
+         author = c(person("M. Edward (Ed)", "Borasky")),
+         year = year,
+         note = note,
+         url = "https://github.com/AlgoCompSynth/oiseaux")

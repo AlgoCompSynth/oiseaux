@@ -1,8 +1,9 @@
 Package: oiseaux
 Title: Manipulate bird calls for musical composition
+Date: 2022-02-19
 Version: 0.0.0.9000
 Authors@R: 
-    person("M. Edward (Ed)", "Borasky", , "znmeb@algotompsynth.com",
+    person("M. Edward (Ed)", "Borasky", , "znmeb@algocompsynth.com",
     role = c("aut", "cre"))
 Description: `oiseaux` is a convenience wrapper on `warbleR`, which downloads
     bird call files from <https://xeno-canto.org/>, and `soundgen`, which
@@ -15,3 +16,9 @@ Imports:
     dplyr,
     soundgen,
     warbleR
+Suggests: 
+    rmarkdown,
+    knitr
+URL: https://github.com/AlgoCompSynth/oiseaux
+BugReports: https://github.com/AlgoCompSynth/oiseaux/issues/new
+VignetteBuilder: knitr
