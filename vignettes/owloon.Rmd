@@ -16,11 +16,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(dplyr)
 library(oiseaux)
-library(soundgen)
-library(stringr)
-library(warbleR)
 ```
 
 ## Goals
@@ -37,54 +33,19 @@ resulting creature of the night is called the _owloon_.
 
 ## Acquiring the source media
 
-### Data source and licensing
-
-Since we're creating a new bird from owls and loons, we need to acquire some
-suitable audio files. The `warbleR` package lets us query the
-[zeno-canto](https://xeno-canto.org/), which is a collection of bird sounds
-from around the world. Each sound file is licensed using one of the
-[Creative Commons](https://creativecommons.org/share-your-work/) licenses.
-
-Since we want to analyze and resynthesize the sounds, and will be using them
-in compositions that may be recorded and published, we can't use files that
-have Creative Commons licenses with the "ND" (no derivative works) or "NC"
-(non-commercial) clause. That leaves us with "CC0" (public domain),
-"CC-BY" (attribution), or "CC-BY-SA" (attribution / share-alike). It turns
-out that most of the usable files are "CC-BY-SA", so that is the license we
-use for the output files distributed with `oiseaux`.
-
-### The great horned owl
-
-`warbleR` allows querying by the English name of a species:
+We acquire data from [xeno-canto](https://xeno-canto.org/) using the
+`oiseaux` function `download_usable_files`. 
 
 ```{r}
 
-# get a data frame of great horned owl sounds
-owls <- warbleR::query_xc("Great Horned Owl")
-
-# filter in the ones we can use
-usable_owls <- owls %>% 
-  dplyr::filter(
-    is.na(stringr::str_match(License, "-nc")) &
-      is.na(stringr::str_match(License, "/-nd"))
-  )
-print(usable_owls)
-
-```
-### The common loon
-
-```{r}
-
-# get a data frame of common loon sounds
-loons <- warbleR::query_xc("Common Loon")
-
-# filter in the ones we can use
-usable_loons <- loons %>% 
-  dplyr::filter(
-    is.na(stringr::str_match(License, "-nc")) &
-      is.na(stringr::str_match(License, "/-nd"))
-  )
-print(usable_loons)
+usable_owls <- oiseaux::download_usable_files(
+  "Great Horned Owl",
+  "~/owls"
+) 
+usable_loons <- oiseaux::download_usable_files(
+  "Common Loon",
+  "~/loons"
+) 
 
 ```
 
